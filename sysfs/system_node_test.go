@@ -21,13 +21,13 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestNUMANodeCPUs(t *testing.T) {
+func TestNUMANodeCPUList(t *testing.T) {
 	fs, err := NewFS(sysTestFixtures)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	got, err := fs.NUMANodeCPUs()
+	got, err := fs.NUMANodeCPUList()
 	if err != nil {
 		t.Fatal(err)
 	}

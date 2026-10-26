@@ -23,10 +23,11 @@ import (
 	"github.com/prometheus/procfs/internal/parsers"
 )
 
-// NUMANodeCPUs returns the CPUs belonging to each NUMA node, keyed by node
+// NUMANodeCPUList returns the CPUs belonging to each NUMA node, keyed by node
 // number, as read from `/sys/devices/system/node/nodeN/cpulist`.
 // Memory-only nodes have an empty CPU list.
-func (fs FS) NUMANodeCPUs() (map[int][]uint16, error) {
+// See https://www.kernel.org/doc/Documentation/ABI/stable/sysfs-devices-node
+func (fs FS) NUMANodeCPUList() (map[int][]uint16, error) {
 	nodes, err := filepath.Glob(fs.sys.Path(nodePattern))
 	if err != nil {
 		return nil, err
